@@ -2,6 +2,7 @@ package test;
 
 import org.junit.Test;
 
+import scr.model.DirectorDAO;
 import scr.model.Utilidades;
 
 import static org.junit.Assert.assertNotNull;
@@ -39,9 +40,14 @@ public class TestDAO {
         assertNotNull(conn);
         conn.close();
 
-        conn = utils.getConnection("./lolailoylere/kakebo_tests.sqlite");
+        conn = utils.getConnection("./lolailoylere/qwerty_tests.sqlite");
         assertNull(conn);
     }
     
+    @Test
+    public void testDameTodosDirector() throws SQLException {
+        DirectorDAO dao = new DirectorDAO();
+        
+    }
 
 }

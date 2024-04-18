@@ -42,7 +42,7 @@ public class Pelicula {
     }
 
 
-    public boolean isAnimacion() {
+    public boolean esAnimacion() {
         return animacion;
     }
     

@@ -3,12 +3,20 @@ package test;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-import scr.statics.Genero;
+import scr.model.statics.Genero;
 
 public class TestStatics {
 
+
     @Test
-    public void testGenero() {
+    public void testCrearGenero() {
+        Genero accion = Genero.ACCION;
+        assertEquals(Genero.ACCION, accion);
+    }
+
+
+    @Test
+    public void testGeneroID() {
         Genero accion = Genero.ACCION;
         Genero aventura = Genero.AVENTURA;
         Genero comedia = Genero.COMEDIA;

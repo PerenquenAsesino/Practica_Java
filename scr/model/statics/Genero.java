@@ -1,4 +1,4 @@
-package scr.statics;
+package scr.model.statics;
 
 
 public enum Genero {

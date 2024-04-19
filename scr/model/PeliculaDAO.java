@@ -30,3 +30,14 @@ public class PeliculaDAO {
     }
     
 }
+
+/*
+a. dameTodos. Debe devolver las películas ordenadas por genero, año
+descencing, titulo.
+
+b. El resto de métodos exactamente igual que los de arriba.
+
+c. Recuerda que en películas debe figurar el género y el nombre del director.
+Puedes resolver esto con joins o con más llamadas a la base de datos
+usando el DAO de directores.
+ */

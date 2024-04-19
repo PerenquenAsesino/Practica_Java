@@ -14,7 +14,7 @@ public class DirectorDAO {
         this.path = path;
     }
 
-    //Devuelve la lista de todos los directores
+    // Devuelve la lista de todos los directores en la DB
     public ArrayList<Director> dameTodos() throws SQLException {
         String sql = "SELECT id, nombre, url_foto, url_web FROM directores";
 
@@ -33,13 +33,13 @@ public class DirectorDAO {
 
             listaDirectores.add(nuevo);
         }
-
+        conn.close();
         return listaDirectores;
     }
 
-    //Devuelve Director buscando por ID
+    // Devuelve Director buscando por ID
     public Director buscaPorId(int id) throws SQLException {
-        String sql = "SELECT nombre, url_foto, url_web FROM directores WHERE id = ?";
+        String sql = "SELECT id, nombre, url_foto, url_web FROM directores WHERE id = ?";
 
         Connection conn = new Utilidades().getConnection(path);
         PreparedStatement sentenciaSQL = conn.prepareStatement(sql);
@@ -56,14 +56,14 @@ public class DirectorDAO {
                     resultado.getString("url_web"));
 
         }
-
+        conn.close();
         return nuevo;
 
     }
 
-    //Devuelve Director buscando por nombre
+    // Devuelve Director buscando por nombre
     public Director buscaPorNombre(String nombre) throws SQLException {
-        String sql = "SELECT id, url_foto, url_web FROM directores WHERE nombre = ?";
+        String sql = "SELECT id, nombre, url_foto, url_web FROM directores WHERE nombre = ?";
 
         Connection conn = new Utilidades().getConnection(path);
         PreparedStatement sentenciaSQL = conn.prepareStatement(sql);
@@ -80,11 +80,26 @@ public class DirectorDAO {
                     resultado.getString("url_web"));
 
         }
-
+        conn.close();
         return nuevo;
+        
+    }
+    
+    // Añade en la DB un Director
+    public void inserta(Director director) throws SQLException {
+        String sql = "INSERT INTO directores(id, nombre, url_foto, url_web) VALUES(?, ?, ?, ?)";
+
+        Connection conn = new Utilidades().getConnection(path);
+        PreparedStatement sentenciaSQL = conn.prepareStatement(sql);
+        sentenciaSQL.setInt(1, director.getId());
+        sentenciaSQL.setString(2, director.getNombre());
+        sentenciaSQL.setString(3, director.getUrlFoto());
+        sentenciaSQL.setString(4, director.getUrlWeb());
+        sentenciaSQL.executeUpdate();
+        conn.close();
     }
 
-    //Elimina de la DB el director por ID
+    // Elimina de la DB el director por ID
     public void borra(int id) throws SQLException {
         String sql = "DELETE FROM directores WHERE id = ?";
 
@@ -92,11 +107,10 @@ public class DirectorDAO {
         PreparedStatement sentenciaSQL = conn.prepareStatement(sql);
         sentenciaSQL.setInt(1, id);
         sentenciaSQL.executeUpdate();
-    
+        conn.close();
     }
-    
 
-    //Modifica los datos de Director
+    // Modifica los datos de Director con esa ID
     public void modifica(Director director) throws SQLException {
         String sql = "UPDATE directores SET nombre = ?, url_foto = ?, url_web = ? WHERE id = ?";
     
@@ -107,7 +121,7 @@ public class DirectorDAO {
         sentenciaSQL.setString(3, director.getUrlWeb());
         sentenciaSQL.setInt(4, director.getId());
         sentenciaSQL.executeUpdate();
-    
-        
+        conn.close();
+
     }
 }

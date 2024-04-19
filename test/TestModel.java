@@ -15,7 +15,7 @@ public class TestModel {
         Director director = new Director(1, "pepe");
 
         assertEquals(director.getId(),1);
-        assertEquals(director.getName(),"pepe");
+        assertEquals(director.getNombre(),"pepe");
         
     }
     
@@ -29,10 +29,10 @@ public class TestModel {
         Pelicula peli = new Pelicula("titanic", director, "1990", Genero.ACCION, animacion);
 
         assertEquals(peli.getTitulo(), "titanic");
-        assertEquals(peli.getDirector().getName(), "pepe");
+        assertEquals(peli.getDirector().getNombre(), "pepe");
         assertEquals(peli.getFecha(), "1990");
         assertEquals(peli.getGenero(), Genero.ACCION);
-        assertEquals(peli.isAnimacion(), false);
+        assertEquals(peli.esAnimacion(), false);
 
     }
 }

@@ -54,11 +54,9 @@ public class DirectorDAO {
                     resultado.getString("nombre"), 
                     resultado.getString("url_foto"), 
                     resultado.getString("url_web"));
-
         }
         conn.close();
         return nuevo;
-
     }
 
     // Devuelve Director buscando por nombre

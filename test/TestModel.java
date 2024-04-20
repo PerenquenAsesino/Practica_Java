@@ -26,13 +26,15 @@ public class TestModel {
         Director director = new Director(1, "pepe");
         boolean animacion = false;
 
-        Pelicula peli = new Pelicula("titanic", director, "1990", Genero.ACCION, animacion);
+        Pelicula peli = new Pelicula(1,"titanic", director, 1990, "www.caratula", Genero.ACCION, animacion);
 
+        assertEquals(peli.getId(), 1);
         assertEquals(peli.getTitulo(), "titanic");
         assertEquals(peli.getDirector().getNombre(), "pepe");
-        assertEquals(peli.getFecha(), "1990");
+        assertEquals(peli.getAnyo(), 1990);
         assertEquals(peli.getGenero(), Genero.ACCION);
-        assertEquals(peli.esAnimacion(), false);
+        assertEquals(peli.isAnimacion(), false);
+        assertEquals(peli.getUrlCaratula(), "www.caratula");
 
     }
 }

@@ -1,49 +1,50 @@
 package scr.model;
+
 import scr.model.statics.Genero;
 
 public class Pelicula {
 
     private String titulo;
-    private Director director;
-    private String anyo;
+    private int anyo;
     private Genero genero;
     private boolean animacion;
-    
+    private int id;
+    private String urlCaratula;
+    private Director directores;
 
-    public Pelicula(String titulo, Director director, String anyo, Genero genero, boolean animacion) {
+    public Pelicula(int id, String titulo, Director directores, int anyo, String urlCaratula, Genero genero, boolean animacion) {
 
         this.titulo = titulo;
-        this.director = director;
+        this.directores = directores;
         this.anyo = anyo;
         this.genero = genero;
         this.animacion = animacion;
-
+        this.id = id;
+        this.urlCaratula = urlCaratula;
 
     }
-
-
+    
+    public int getId() {
+        return id;
+    }
     public String getTitulo() {
         return titulo;
     }
-
-
     public Director getDirector() {
-        return director;
+        return directores;
     }
-
-
-    public String getFecha() {
-        return anyo;
-    }
-
-
     public Genero getGenero() {
         return genero;
     }
-
-
-    public boolean esAnimacion() {
+    public int getAnyo() {
+        return anyo;
+    }
+    public boolean isAnimacion() {
         return animacion;
     }
-    
+    public String getUrlCaratula() {
+        return urlCaratula;
+    }
+  
 }
+
